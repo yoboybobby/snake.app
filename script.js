@@ -71,3 +71,4 @@ startGame();
 generateApple();
 
 setInterval(move,200);
+
