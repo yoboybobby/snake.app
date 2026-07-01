@@ -7,6 +7,14 @@ let appleIndex = 0;
 let score = 0;
 let timerId = 0;
 let intervalTime = 200;
+const bgmusic = new Audio('assets/b.mp3');
+const eatmusic = new Audio('assets/e.mp3');
+const emusic = new Audio('assets/die.mp3');
+
+
+
+
+
 
 // יצירת הלוח (400 משבצות)
 function createBoard() {
@@ -23,6 +31,7 @@ function createBoard() {
 
 function startGame() {
     // איפוס
+    bgmusic.play();
     currentSnake.forEach(index => squares[index].classList.remove('snake'));
     squares[appleIndex].classList.remove('apple');
     clearInterval(timerId);
@@ -35,7 +44,12 @@ function startGame() {
 
 }
 function endgame() {
+    bgmusic.pause();
+    emusic.play();
+
     return clearInterval(timerId);
+
+   
 }
 function move() {
     // בדיקת פסילה (קירות ופגיעה עצמית)
@@ -50,8 +64,8 @@ function move() {
 
  if (hitRight || hitBottom || hitTop || hitLeft || hitSelf) {
     return endgame();
+    
 }
-
 
 const tail = currentSnake.pop();
 squares[tail].classList.remove('snake');
@@ -63,6 +77,7 @@ currentSnake.unshift(newHead);
 if (squares[newHead].classList.contains('apple')) {
     squares[newHead].classList.remove('apple');
     squares[tail].classList.add('snake');
+    eatmusic.play()
     currentSnake.push(tail);
     score++;
     scoreDisplay.textContent = score;
@@ -138,5 +153,4 @@ document.addEventListener('keydown', (e) => {
 
 createBoard();
 startGame();
-
 
