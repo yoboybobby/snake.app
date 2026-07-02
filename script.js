@@ -154,4 +154,3 @@ document.addEventListener('keydown', (e) => {
 
 
 createBoard();
-startGame();
