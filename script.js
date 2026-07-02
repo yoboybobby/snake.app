@@ -56,7 +56,6 @@ function endgame() {
 function move() {
     // בדיקת פסילה (קירות ופגיעה עצמית)
 
-    bgmusic.play();
     const hitBottom = (currentSnake[0] + 20 >= 400 && direction === 20);
     const hitTop = (currentSnake[0] - 20 < 0 && direction === -20);
     const hitRight = (currentSnake[0] % 20 === 19 && direction === 1);
