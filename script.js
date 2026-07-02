@@ -31,6 +31,8 @@ function createBoard() {
 
 function startGame() {
     // איפוס
+    emusic.pause();
+    emusic.currentTime=0;
     bgmusic.play();
     currentSnake.forEach(index => squares[index].classList.remove('snake'));
     squares[appleIndex].classList.remove('apple');
@@ -54,7 +56,7 @@ function endgame() {
 function move() {
     // בדיקת פסילה (קירות ופגיעה עצמית)
 
-
+    bgmusic.play();
     const hitBottom = (currentSnake[0] + 20 >= 400 && direction === 20);
     const hitTop = (currentSnake[0] - 20 < 0 && direction === -20);
     const hitRight = (currentSnake[0] % 20 === 19 && direction === 1);
@@ -153,4 +155,3 @@ document.addEventListener('keydown', (e) => {
 
 createBoard();
 startGame();
-
